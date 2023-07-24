@@ -6,6 +6,7 @@ using FilmLand.Service.Common.Helpers;
 using FilmLand.Service.Dtos.Companies;
 using FilmLand.Service.Interfaces.Companies;
 using FilmLand.Service.Validators.Dtos.Company;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,18 +24,22 @@ public class CompaniesController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> GetAllAsync([FromQuery] int page = 1)
         => Ok(await _service.GetAllAsync(new PaginationParams(page, maxPageSize)));
 
     [HttpGet("{companyId}")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetByIdAsync(long companyId)
         => Ok(await _service.GetByIdAsync(companyId));
 
     [HttpGet("count")]
+    [AllowAnonymous]
     public async Task<IActionResult> CountAsync()
         => Ok(await _service.CountAsync());
 
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> CreateAsync([FromForm] CompanyCreateDto dto)
     {
         var createValidator = new CompanyCreateValidator();
@@ -44,6 +49,7 @@ public class CompaniesController : ControllerBase
     }
 
     [HttpPut("{companyId}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateAsync(long companyId, [FromForm] CompanyUpdateDto dto)
     {
         var updateValidator = new CompanyUpdateValidator();
@@ -51,7 +57,9 @@ public class CompaniesController : ControllerBase
         if (validationResult.IsValid) return Ok(await _service.UpdateAsync(companyId, dto));
         else return BadRequest(validationResult.Errors);
     }
+
     [HttpDelete("{companyId}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteAsync(long companyId)
         => Ok(await _service.DeleteAsync(companyId));
 }

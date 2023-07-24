@@ -76,10 +76,12 @@ public class CompanyService : ICompanyService
         {
             // delete old image
             var deleteResult = await _fileService.DeleteImageAsync(company.ImagePath);
-            if (deleteResult == false) throw new ImageNotFoundException();
+            if (deleteResult is false) throw new ImageNotFoundException();
 
             // upload new image
             string newImagePath = await _fileService.UploadImageAsync(dto.Image);
+
+            // parse new path to category
             company.ImagePath = newImagePath;
         }
         // else company old image is have to save

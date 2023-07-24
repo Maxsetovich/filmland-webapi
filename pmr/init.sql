@@ -45,21 +45,11 @@ create table users
 	first_name varchar(50) not null,
 	last_name varchar(50) not null,
 	image_path text not null,
-	email varchar(50) not null,
+	phone_number varchar(50) not null,
+	phone_number_confirmed bool not null,
 	password_hash text not null,
 	salt text not null,
 	identity_role text not null,
-	created_at timestamp without time zone default now(),
-	updated_at timestamp without time zone default now()
-);
-
-create table actors
-(
-	id bigint generated always as identity primary key,
-	first_name varchar(50) not null,
-	last_name varchar(50) not null,
-	image_path text not null,
-	bio text not null,
 	created_at timestamp without time zone default now(),
 	updated_at timestamp without time zone default now()
 );
@@ -72,7 +62,6 @@ create table movies
 	company_id bigint references companies(id),
 	language_id bigint references languages(id),
 	country_id bigint references countries(id),
-	actor_id bigint references actors(id),
 	name varchar(50) not null,
 	movie_path text not null,
 	image_path text not null,
@@ -85,3 +74,5 @@ create table movies
 	updated_at timestamp without time zone default now()
 );
 
+ALTER DATABASE "filmland-db"
+SET TIMEZONE TO 'Asia/Tashkent';

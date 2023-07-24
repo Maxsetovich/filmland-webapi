@@ -2,9 +2,9 @@
 
 namespace FilmLand.Domain.Exceptions;
 
-public class NotFoundException : Exception
+public class ExpiredException : Exception
 {
-    public HttpStatusCode StatusCode { get; } = HttpStatusCode.NotFound;
+    public HttpStatusCode StatusCode { get; } = HttpStatusCode.Gone;
 
     public string TitleMessage { get; protected set; } = String.Empty;
 }

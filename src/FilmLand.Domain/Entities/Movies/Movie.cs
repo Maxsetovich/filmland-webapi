@@ -14,8 +14,6 @@ public class Movie : Auditable
 
     public long CountryId { get; set; }
 
-    public long ActorId { get; set; }
-
     [MaxLength(50)]
     public string Name { get; set; } = String.Empty;
 

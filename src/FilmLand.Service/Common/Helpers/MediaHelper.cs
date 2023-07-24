@@ -15,12 +15,12 @@ public class MediaHelper
         return new string[]
         {
             // JPG files
-            ".jpg, .jpeg",
+            ".jpg", ".jpeg",
             // PNG files
             ".png",
             // BMP files
             ".bmp",
-            // Heic files (iphone)
+            // SVG files
             ".svg"
         };
     }

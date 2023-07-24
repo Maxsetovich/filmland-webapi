@@ -2,7 +2,7 @@
 
 namespace FilmLand.Domain.Exceptions;
 
-public class NotFoundException : Exception
+public class AlreadyExistsException : Exception
 {
     public HttpStatusCode StatusCode { get; } = HttpStatusCode.NotFound;
 
