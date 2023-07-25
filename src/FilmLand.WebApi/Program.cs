@@ -11,6 +11,7 @@ using FilmLand.Service.Services.Common;
 using FilmLand.Service.Services.Companies;
 using FilmLand.Service.Services.Notifications;
 using FilmLand.WebApi.Configurations;
+using FilmLand.WebApi.Configurations.Layers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,21 +20,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddMemoryCache();
-
-//-> DI containers, IoC containers
-builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-
-builder.Services.AddScoped<IFileService, FileService>();
-builder.Services.AddScoped<ICompanyService, CompanyService>();
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<IPaginator, Paginator>();
-
-builder.Services.AddSingleton<ISmsSender, SmsSender>();
 builder.ConfigureJwtAuth();
 builder.ConfigureSwaggerAuth();
-//->
+builder.ConfigureDataAccess();
+builder.ConfigureServiceLayer();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
