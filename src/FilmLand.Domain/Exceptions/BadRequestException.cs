@@ -2,9 +2,8 @@
 
 namespace FilmLand.Domain.Exceptions;
 
-public class BadRequestException : Exception
+public class BadRequestException : ClientException
 {
-    public HttpStatusCode StatusCode { get; } = HttpStatusCode.BadRequest;
-    
-    public string TitleMessage { get; protected set; } = String.Empty;
+    public override HttpStatusCode StatusCode { get; } = HttpStatusCode.BadRequest; 
+    public override string TitleMessage { get; protected set; } = String.Empty;
 }

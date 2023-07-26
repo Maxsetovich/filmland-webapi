@@ -12,6 +12,7 @@ using FilmLand.Service.Services.Companies;
 using FilmLand.Service.Services.Notifications;
 using FilmLand.WebApi.Configurations;
 using FilmLand.WebApi.Configurations.Layers;
+using FilmLand.WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddMemoryCache();
 builder.ConfigureJwtAuth();
 builder.ConfigureSwaggerAuth();
+builder.ConfigureCORSPolicy();
 builder.ConfigureDataAccess();
 builder.ConfigureServiceLayer();
 
@@ -32,7 +34,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 app.UseStaticFiles();
+app.UseMiddleware<ExceptionHandlerMiddleware>();
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

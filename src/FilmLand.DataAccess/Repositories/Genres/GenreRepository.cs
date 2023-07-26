@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using FilmLand.DataAccess.Interfaces.Genres;
 using FilmLand.DataAccess.Utilities;
+using FilmLand.Domain.Entities.Companies;
 using FilmLand.Domain.Entities.Genres;
 using static Dapper.SqlMapper;
 
@@ -8,9 +9,23 @@ namespace FilmLand.DataAccess.Repositories.Genres;
 
 public class GenreRepository : BaseRepository, IGenreRepository
 {
-    public Task<long> CountAsync()
+    public async Task<long> CountAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            string query = "SELECT COUNT(*) FROM genres";
+            var result = await _connection.QuerySingleAsync(query);
+            return result;
+        }
+        catch
+        {
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 
     public async Task<int> CreateAsync(Genre entity)
@@ -58,7 +73,7 @@ public class GenreRepository : BaseRepository, IGenreRepository
         {
             await _connection.OpenAsync();
             string query = $"SELECT * FROM genres ORDER BY id DESC " +
-                $"OFFSET {@params.GetSkipCount()} LIMIT {@params.PageSize};";
+                $"OFFSET {@params.GetSkipCount} LIMIT {@params.PageSize};";
             var result = (await _connection.QueryAsync<Genre>(query)).ToList();
             return result;
         }
@@ -72,13 +87,43 @@ public class GenreRepository : BaseRepository, IGenreRepository
         }
     }
 
-    public Task<Genre?> GetByIdAsync(long id)
+    public async Task<Genre?> GetByIdAsync(long id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"SELECT * FROM genres WHERE id=@Id";
+            var result = await _connection.QuerySingleAsync<Genre>(query, new { Id = id });
+            return result;
+        }
+        catch
+        {
+            return null;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 
-    public Task<int> UpdateAsync(long id, Genre entity)
+    public async Task<int> UpdateAsync(long id, Genre entity)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"UPDATE public.genres " +
+                $"SET name=@Name, created_at=@CreatedAt, updated_at=@UpdatedAt " +
+                $"WHERE id={id}";
+            var result = await _connection.ExecuteAsync(query, entity);
+            return result;
+        }
+        catch
+        {
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 }
