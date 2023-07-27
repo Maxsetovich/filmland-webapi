@@ -14,7 +14,7 @@ public static class CorsPolicyConfiguration
             option.AddPolicy("OnlySite", builder =>
             {
                 builder.WithOrigins("https://www.filmland.uz")
-                    .AllowAnyHeader().AllowAnyMethod();
+                    .AllowAnyMethod().AllowAnyHeader();
             });
         });
     }

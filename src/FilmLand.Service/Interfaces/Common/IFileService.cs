@@ -14,4 +14,14 @@ public interface IFileService
 
     public Task<bool> DeleteAvatarAsync(string subpath);
 
+    // returns sub path of this movie
+    public Task<string> UploadMovieAsync(IFormFile movie);
+
+    public Task<bool> DeleteMovieAsync(string subpath);
+
+    // returns sub path of this trailer
+    public Task<string> UploadTrailerAsync(IFormFile trailer);
+
+    public Task<bool> DeleteTrailerAsync(string subpath);
+
 }

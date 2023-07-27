@@ -4,7 +4,7 @@ using FilmLand.Domain.Entities.Movies;
 
 namespace FilmLand.DataAccess.Interfaces.Movies;
 
-public interface IMovieRepository : IRepository<Movie, MovieViewModel>,
+public interface IMovieRepository : IRepository<Movie, Movie>,
     IGetAll<MovieViewModel>, ISearchable<MovieViewModel>
 {
 

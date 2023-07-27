@@ -23,12 +23,12 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddMemoryCache();
 builder.ConfigureJwtAuth();
 builder.ConfigureSwaggerAuth();
-builder.ConfigureCORSPolicy();
+//builder.ConfigureCORSPolicy();
 builder.ConfigureDataAccess();
 builder.ConfigureServiceLayer();
 
 var app = builder.Build();
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -37,7 +37,6 @@ app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 app.UseStaticFiles();
 app.UseMiddleware<ExceptionHandlerMiddleware>();
-
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

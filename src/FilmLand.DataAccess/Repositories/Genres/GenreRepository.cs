@@ -1,9 +1,7 @@
 ﻿using Dapper;
 using FilmLand.DataAccess.Interfaces.Genres;
 using FilmLand.DataAccess.Utilities;
-using FilmLand.Domain.Entities.Companies;
 using FilmLand.Domain.Entities.Genres;
-using static Dapper.SqlMapper;
 
 namespace FilmLand.DataAccess.Repositories.Genres;
 
@@ -14,8 +12,8 @@ public class GenreRepository : BaseRepository, IGenreRepository
         try
         {
             await _connection.OpenAsync();
-            string query = "SELECT COUNT(*) FROM genres";
-            var result = await _connection.QuerySingleAsync(query);
+            string query = $"SELECT COUNT(*) FROM genres";
+            var result = await _connection.QuerySingleAsync<long>(query);
             return result;
         }
         catch
@@ -73,7 +71,7 @@ public class GenreRepository : BaseRepository, IGenreRepository
         {
             await _connection.OpenAsync();
             string query = $"SELECT * FROM genres ORDER BY id DESC " +
-                $"OFFSET {@params.GetSkipCount} LIMIT {@params.PageSize};";
+                $"OFFSET {@params.GetSkipCount()} LIMIT {@params.PageSize};";
             var result = (await _connection.QueryAsync<Genre>(query)).ToList();
             return result;
         }

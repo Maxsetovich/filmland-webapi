@@ -67,7 +67,6 @@ public class GenreService : IGenreService
 
         // parse new items to genre
         genre.Name = dto.Name;
-
         genre.UpdatedAt = TimeHelper.GetDateTime();
 
         var dbResult = await _repository.UpdateAsync(genreId, genre);
