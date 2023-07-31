@@ -1,10 +1,7 @@
-﻿using FilmLand.Domain.Enums;
-using FilmLand.Service.Dtos.Auth;
+﻿using FilmLand.Service.Dtos.Auth;
 using FilmLand.Service.Interfaces.Auth;
-using FilmLand.Service.Services.Auth;
 using FilmLand.Service.Validators;
 using FilmLand.Service.Validators.Dtos.Auth;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FilmLand.WebApi.Controllers;

@@ -1,13 +1,8 @@
-﻿using FilmLand.DataAccess.Interfaces.Companies;
-using FilmLand.DataAccess.Repositories.Companies;
-using FilmLand.DataAccess.Utilities;
-using FilmLand.Domain.Entities.Companies;
-using FilmLand.Service.Common.Helpers;
+﻿using FilmLand.DataAccess.Utilities;
 using FilmLand.Service.Dtos.Companies;
 using FilmLand.Service.Interfaces.Companies;
 using FilmLand.Service.Validators.Dtos.Company;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FilmLand.WebApi.Controllers;

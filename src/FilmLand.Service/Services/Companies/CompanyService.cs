@@ -7,7 +7,6 @@ using FilmLand.Service.Common.Helpers;
 using FilmLand.Service.Dtos.Companies;
 using FilmLand.Service.Interfaces.Common;
 using FilmLand.Service.Interfaces.Companies;
-using System.IO;
 
 namespace FilmLand.Service.Services.Companies;
 
@@ -45,7 +44,7 @@ public class CompanyService : ICompanyService
     public async Task<bool> DeleteAsync(long companyId)
     {
         var company = await _repository.GetByIdAsync(companyId);
-        if(company is null) throw new CompanyNotFoundException();
+        if (company is null) throw new CompanyNotFoundException();
 
         var result = await _fileService.DeleteImageAsync(company.ImagePath);
         if (result == false) throw new ImageNotFoundException();

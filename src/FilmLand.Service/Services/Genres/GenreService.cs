@@ -6,7 +6,6 @@ using FilmLand.Service.Common.Helpers;
 using FilmLand.Service.Dtos.Genres;
 using FilmLand.Service.Interfaces.Common;
 using FilmLand.Service.Interfaces.Genres;
-using FilmLand.Service.Services.Common;
 
 namespace FilmLand.Service.Services.Genres;
 

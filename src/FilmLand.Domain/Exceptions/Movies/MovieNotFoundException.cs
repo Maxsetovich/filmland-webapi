@@ -1,6 +1,6 @@
 ﻿namespace FilmLand.Domain.Exceptions.Movies;
 
-public class MovieNotFoundException :NotFoundException
+public class MovieNotFoundException : NotFoundException
 {
     public MovieNotFoundException()
     {

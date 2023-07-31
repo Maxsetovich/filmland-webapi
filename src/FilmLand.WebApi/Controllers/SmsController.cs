@@ -1,6 +1,5 @@
 ﻿using FilmLand.Service.Dtos.Notifications;
 using FilmLand.Service.Interfaces.Notifications;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FilmLand.WebApi.Controllers;

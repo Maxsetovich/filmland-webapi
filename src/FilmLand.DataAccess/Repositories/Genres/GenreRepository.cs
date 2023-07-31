@@ -36,7 +36,7 @@ public class GenreRepository : BaseRepository, IGenreRepository
             var result = await _connection.ExecuteAsync(query, entity);
             return result;
         }
-        catch 
+        catch
         {
             return 0;
         }

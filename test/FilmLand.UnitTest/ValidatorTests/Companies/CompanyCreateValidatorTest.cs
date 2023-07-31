@@ -1,5 +1,4 @@
-﻿using FilmLand.DataAccess.Interfaces.Companies;
-using FilmLand.Service.Dtos.Companies;
+﻿using FilmLand.Service.Dtos.Companies;
 using FilmLand.Service.Validators.Dtos.Company;
 using Microsoft.AspNetCore.Http;
 using System.Text;

@@ -33,7 +33,7 @@ public class MovieRepository : BaseRepository, IMovieRepository
         {
             await _connection.OpenAsync();
             string query = "INSERT INTO public.movies(genre_id, title_id, company_id, language_id, country_id, name, movie_path, image_path, trailer_path, description, rating, release_year, duration, created_at, updated_at) " +
-	                        "VALUES(@GenreId, @TitleId, @CompanyId, @LanguageId, @CountryId, @Name, @MoviePath, @ImagePath, @TrailerPath, @Description, @Rating, @ReleaseYear, @Duration, @CreatedAt, @UpdatedAt);";
+                            "VALUES(@GenreId, @TitleId, @CompanyId, @LanguageId, @CountryId, @Name, @MoviePath, @ImagePath, @TrailerPath, @Description, @Rating, @ReleaseYear, @Duration, @CreatedAt, @UpdatedAt);";
             var result = await _connection.ExecuteAsync(query, entity);
             return result;
         }

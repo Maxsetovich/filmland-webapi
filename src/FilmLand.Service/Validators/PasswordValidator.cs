@@ -3,7 +3,7 @@
 public class PasswordValidator
 {
     public static string Symbols { get; } = "~`!@#$%^&*()_-+={[}]\\:;\"'<,>.?/ ";
-    
+
     public static (bool IsValid, string Message) IsStrongPassword(string password)
     {
         if (password.Length < 8) return (IsValid: false, Message: "Password cannot be less than 8 characters!");
@@ -13,7 +13,7 @@ public class PasswordValidator
         bool isLowerCaseExists = false;
         bool isCharacterExists = false;
 
-        foreach(var item in password)
+        foreach (var item in password)
         {
             if (char.IsUpper(item)) isUpperCaseExists = true;
             if (char.IsLower(item)) isLowerCaseExists = true;

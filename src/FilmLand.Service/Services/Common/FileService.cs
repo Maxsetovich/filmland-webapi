@@ -1,9 +1,7 @@
-﻿using FilmLand.Domain.Entities.Movies;
-using FilmLand.Service.Common.Helpers;
+﻿using FilmLand.Service.Common.Helpers;
 using FilmLand.Service.Interfaces.Common;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace FilmLand.Service.Services.Common;
 
@@ -23,7 +21,7 @@ public class FileService : IFileService
     public async Task<bool> DeleteImageAsync(string subpath)
     {
         string path = Path.Combine(ROOTPATH, subpath);
-        if(File.Exists(path))
+        if (File.Exists(path))
         {
             await Task.Run(() =>
             {

@@ -17,7 +17,7 @@ public class UserRepository : BaseRepository, IUserRepository
             var result = await _connection.QuerySingleAsync<long>(query);
             return result;
         }
-        catch 
+        catch
         {
             return 0;
         }

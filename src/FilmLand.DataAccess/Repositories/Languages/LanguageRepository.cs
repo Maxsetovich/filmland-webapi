@@ -64,7 +64,7 @@ public class LanguageRepository : BaseRepository, ILanguageRepository
             await _connection.CloseAsync();
         }
     }
-    
+
     public async Task<IList<Language>> GetAllAsync(PaginationParams @params)
     {
         try

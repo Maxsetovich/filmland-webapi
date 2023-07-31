@@ -8,7 +8,7 @@ public static class CorsPolicyConfiguration
         {
             option.AddPolicy("AllowAll", builder =>
             {
-                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyMethod();
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             });
 
             option.AddPolicy("OnlySite", builder =>

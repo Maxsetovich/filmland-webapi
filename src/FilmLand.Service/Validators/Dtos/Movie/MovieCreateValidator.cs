@@ -15,7 +15,7 @@ public class MovieCreateValidator : AbstractValidator<MovieCreateDto>
         RuleFor(dto => dto.CompanyId).NotNull().NotEmpty().WithMessage("CompanyId field is required");
 
         RuleFor(dto => dto.LanguageId).NotNull().NotEmpty().WithMessage("LanguageId field is required");
-        
+
         RuleFor(dto => dto.CountryId).NotNull().NotEmpty().WithMessage("CountryId field is required");
 
         RuleFor(dto => dto.Name).NotNull().NotEmpty().WithMessage("Name field is required")
@@ -39,7 +39,7 @@ public class MovieCreateValidator : AbstractValidator<MovieCreateDto>
             FileInfo fileInfo = new FileInfo(predicate);
             return MediaHelper.GetImageExtensions().Contains(fileInfo.Extension);
         }).WithMessage("This file type is not image file");
-        
+
         //int maxTrailerSize = 1;
         RuleFor(dto => dto.Trailer).NotEmpty().NotNull().WithMessage("Trailer field is required");
         //RuleFor(dto => dto.Trailer.Length).LessThan(maxTrailerSize * 1024 * 1024 * 1024 * 1024 * 1024 + 1).WithMessage($"Trailer size must be less than {maxTrailerSize} MB");

@@ -9,7 +9,6 @@ using FilmLand.Service.Dtos.Notifications;
 using FilmLand.Service.Dtos.Security;
 using FilmLand.Service.Interfaces.Auth;
 using FilmLand.Service.Interfaces.Notifications;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace FilmLand.Service.Services.Auth;
@@ -36,7 +35,7 @@ public class AuthService : IAuthService
         this._tokenService = tokenService;
     }
 
-    #pragma warning disable
+#pragma warning disable
     public async Task<(bool Result, int CachedMinutes)> RegisterAsync(RegisterDto dto)
     {
         var user = await _userRepository.GetByPhoneAsync(dto.PhoneNumber);

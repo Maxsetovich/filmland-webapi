@@ -1,6 +1,4 @@
-﻿using FilmLand.DataAccess.Interfaces.Titles;
-using FilmLand.DataAccess.Repositories.Titles;
-using FilmLand.Service.Interfaces.Auth;
+﻿using FilmLand.Service.Interfaces.Auth;
 using FilmLand.Service.Interfaces.Common;
 using FilmLand.Service.Interfaces.Companies;
 using FilmLand.Service.Interfaces.Countries;
@@ -32,7 +30,7 @@ public static class ServiceLayerConfiguration
         builder.Services.AddScoped<ICountryService, CountryService>();
         builder.Services.AddScoped<ILanguageService, LanguageService>();
         builder.Services.AddScoped<ITitleService, TitleService>();
-        builder.Services.AddScoped<IMovieService, MovieService>(); 
+        builder.Services.AddScoped<IMovieService, MovieService>();
         builder.Services.AddScoped<IAuthService, AuthService>();
         builder.Services.AddScoped<ITokenService, TokenService>();
         builder.Services.AddScoped<IPaginator, Paginator>();
